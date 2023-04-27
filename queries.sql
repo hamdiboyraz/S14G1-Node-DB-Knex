@@ -14,13 +14,20 @@ ORDER BY OrderDate DESC
 LIMIT 10;
 
 -- Londra, Madrid veya Brezilya'da yaşayan tüm müşterileri bulun
+/*
 SELECT * FROM Customers
+WHERE City = "London" OR City = "Madrid" OR Country = 'Brazil';
+SELECT * FROM Customers
+*/
 WHERE City IN ('London', 'Madrid') OR Country = 'Brazil';
 
 -- "The Shire" için bir müşteri kaydı ekleyin, ilgili kişi adı "Bilbo Baggins", adres - "Bag End" içinde "1 Hobbit-Hole", posta kodu "111" ve ülke "Middle Earth"
 INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
 VALUES ('The Shire', 'Bilbo Baggins', '1 Hobbit-Hole, Bag End', 'The Shire', '111', 'Middle Earth');
-
+/*
+INSERT INTO [Customers]
+VALUES (93, 'The Shire', 'Bilbo Baggins', '1 Hobbit-Hole, Bag End', 'The Shire', '111', 'Middle Earth');
+*/
 -- Posta kodu "11122" olarak değişecek şekilde Bilbo Baggins kaydını güncelleyin
 UPDATE Customers
 SET PostalCode = '11122'
@@ -31,4 +38,4 @@ SELECT DISTINCT City FROM Customers
 -- SELECT COUNT(DISTINCT City) FROM Customers;
 -- (Zorlayıcı Görev) 20 karakterden uzun adları olan tüm tedarikçileri bulun. Adın uzunluğunu almak için "length(SupplierName)" kullanabilirsiniz.
 SELECT * FROM Suppliers
-WHERE LENGTH(SupplierName) > 20;
+WHERE LENGTH(SupplierName) > 20; 
